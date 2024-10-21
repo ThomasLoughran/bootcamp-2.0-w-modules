@@ -1,6 +1,7 @@
 import { Express } from "express";
 import chickens from "../data/chickens.json";
 import { Chicken } from "../chickenSummary";
+import omit from "lodash.omit";
 
 type ChickensRequest = {
   limit?: number;
@@ -17,6 +18,21 @@ export const addChickensEndpoint = (app: Express) => {
       +skip,
       +limit + +skip
     );
-    res.send(myChickens);
+    res.send(
+      myChickens.map((chicken) => omit(chicken, ["about", "gender", "age"]))
+    );
+  });
+
+  app.get(`${BASE_URL}/chickens/:id`, async (req, res) => {
+    const { id } = req.params;
+    const chicken = (chickens as Chicken[]).find(
+      (chicken) => chicken.id === +id
+    );
+
+    if (chicken === undefined) {
+      res.sendStatus(404);
+    } else {
+      res.send(chicken);
+    }
   });
 };
