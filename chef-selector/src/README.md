@@ -19,13 +19,13 @@ The filter can be used to filter by job title (for ease of the user). Unlike fil
 
 ### State
 
-This is mainly an exercise in controlling state and also how to filter and map stuff to be how we want it to be. I do not want any context used in this exercise, as there are effectively only 2 pages that can easily have correct state passed between them. This reflects how it what actually be done in real life.
+This is mainly an exercise in controlling state and also how to filter and map stuff to be how we want it to be. I do not want any context used in this exercise, as there are effectively only 2 pages that can easily have correct state passed between them. This reflects how it might actually be done in real life.
 
 ### Tips
 
-1. Start with overall navigation, there is a page for the overall exercise and 2 sub-pages (SelectChefsPage, ResultsPage). I'd build this skeleton first, how does the user for from the selection page to the confirmation page and back (we're not using react router yet)?
+1. Start with overall navigation, there is a page for the overall exercise and 2 sub-pages (SelectChefsPage, ResultsPage). I'd build this skeleton first, how does the user go from the selection page to the confirmation page and back (we're not using react router yet)?
 2. Next I would build a ChefsTable component that puts a check box next to each chef in a Mui table and has a callback used to communicate who was selected
-3. This component could be used for selection and deselection. In fact any answer where it doesn't wouldn't pass ode review
+3. This component could be used for selection and deselection. In fact any answer where it doesn't wouldn't pass code review
 
 ### Promotion
 
