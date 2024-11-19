@@ -1,45 +1,39 @@
-## Welcome to the power of ten exercise!
+## What am I doing?
 
-(https://www.thepowerof10.info/)
+### Mission 1 - Simple loading screen
 
-This is an exercise to test you knowledge of implementing table-based sorting and paging. It will help you develop the following skills:
+1. You are given the "back end" function `getMainArticle` which returns in 2 seconds with an article or one time in three with an error. In mission one you are to
 
-- using useReducer to amalgamate complex, multi field state into a single state
-- implementing tri-state user sort patterns
-- understanding how paging works and relates to sorting/filtering
+- update `MainPage.tsx` to call `getMainArticle` (with id=1) and display an article in the `Article` component
 
-## Getting started
+![alt text](image-2.png)
 
-1. All data is from one endpoint which is in the `power-of-ten` repository (which can be run with `npm start`)
-2. This repo has been properly written to be more like a real API, and the entire endpoint can be explored/understood/queried through http://localhost:4000/api
+- you also need to provide an `InProgress` component while the call is in progress
 
-## Rules
+![alt text](image-3.png)
 
-1. The main display table must be a MUI table (**NOT** a MUI data grid)
-2. Use the pagination that is designed to go with the MUI table (https://mui.com/material-ui/react-table/#custom-pagination-options)
-3. It is highly recommended that you use this pattern to assist with the sorting (https://mui.com/material-ui/react-table/#sorting-amp-selecting)
-4. The following state items control what data is passed to the endpoint:
-   - gender
-   - distance
-   - sort details (sort field, order - asc | desc)
-   - page
-   - rowsPerPage
-5. I want all of the data in 4. in one piece of state (not 5 seperate state variables) and use a `useReducer` to manage the update of them (https://react.dev/reference/react/useReducer)
-6. TIP - Go slowly on the sorting aspect of the Table, that is easily the hardest bit of this exercise
-7. When you use useReducer you **should** use discriminated union actions (https://medium.com/@km87/typescript-discriminated-unions-d3b54bf14399)
-8. I don't want any testing (for now)
-9. I have included video of my solution
+- in the event of an error, you need to display the `Error` component:
 
-## Part 2 - Testing
+![alt text](image.png)
 
-1. Hopefully you haven't gone off piste and that by the end you have
+I don't want any styling changes or any changes to the `getMainArticle` function. I also want you to use proper `async` and `.then` is not be allowed as it isn't 2012. I want the code to be clear and concise as possible, but don't build a custome hook, that is mission 2....
 
-- A reducer with the action/state logic
-- A hook that does the Axios interactiomn
-- A table that allows the user to click on the header to sort
+### Misson 2 - Custom Hook
 
-2. Please unit test in the following order (difficulty ASC)
+Encapsulate the call to `getMainArticle` and the in progress and error handling in a custom hook so that it can be easily utilized by the `MainPage` without polluting the main page with complex code.
 
-- The reducer (easy)
-- The axios interaction hook (medium)
-- The table with the sorting algorithm (medium)
+### Mission 3 - Custom wrapper component
+
+We can take this hook further right? Given that an error message and in progress message are generic to any call you make, maybe we can make a custom wrapper where we throw it the error message and in progress message and the data (or component) and it just does everything.
+
+### Mission 4 - 2 api calls to get an article
+
+You need to make a call to `getArticleId` and then that is the id that you use to call `getMainArticle`.
+
+### Mission 5 - 3 articles at once
+
+I want three articles to load immediately once the page is loaded; articles 1, 2 and 3. Note that they all load at different speeds, that is by design.
+
+### Mission 6 - 3 articles that only update when all 3 are loaded
+
+All three articles are loaded at the same time like in #5 but they only get displayed when all 3 are loaded. This is for the use case where we don't want to show anything until we have everything.
