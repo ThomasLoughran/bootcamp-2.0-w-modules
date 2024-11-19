@@ -1,5 +1,5 @@
 import ReactDOM from "react-dom/client";
-import { MainPage } from "./exercise1 copy/pages/MainPage";
+import { MainPage } from "./exercise/pages/MainPage";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
